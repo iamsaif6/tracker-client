@@ -1,8 +1,33 @@
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
+import { useContext } from 'react';
+import { AuthContext } from '../Components/AuthProvider';
+import toast from 'react-hot-toast';
+
+const notifyError = text => toast.error(text);
+const notifySuccess = text => toast.success(text);
 
 const Login = () => {
+  const { loginUser } = useContext(AuthContext);
+
+  //   Handle Login
+
+  const handleLogin = e => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    // Login
+    loginUser(email, password)
+      .then(res => {
+        console.log(res.user);
+        notifySuccess('Logged in Successfully');
+      })
+      .catch(error => notifyError(error.message));
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 mt-[100px] md:mt-0 md:min-h-screen">
       <Helmet>
@@ -22,7 +47,7 @@ const Login = () => {
             <h2>Login To Your Accout</h2>
             <span className="absolute h-[2px] w-[100px] -bottom-[10px] left-1/2 -translate-x-1/2 bg-light"></span>
           </div>
-          <form>
+          <form onSubmit={handleLogin}>
             <input
               className="bg-[#F4F4F5] py-3 placeholder:text-[14px] px-5 text-[16px] border-transparent border-[1px] focus:border-light w-full mb-5  outline-none rounded-md"
               type="email"

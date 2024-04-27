@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet';
 
 const AddSpot = () => {
+  console.log(name);
   return (
     <div>
       <Helmet>
