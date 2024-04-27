@@ -6,3 +6,13 @@
 .navbar ul a.active {
   color: #f24c4c;
 }
+
+.swiper-pagination-bullet-active {
+  background-color: #fff !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: #fff !important;
+  height: 12px !important;
+  width: 12px !important;
+}

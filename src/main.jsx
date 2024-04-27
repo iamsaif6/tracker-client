@@ -7,6 +7,8 @@ import Home from './Pages/Home';
 import TouristsSpot from './Pages/TouristsSpot';
 import AddSpot from './Pages/AddSpot';
 import MyList from './Pages/MyList';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
       {
         path: '/my_list',
         element: <MyList></MyList>,
+      },
+      {
+        path: '/login',
+        element: <Login></Login>,
+      },
+      {
+        path: '/register',
+        element: <Register></Register>,
       },
     ],
   },

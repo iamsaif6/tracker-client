@@ -1,14 +1,22 @@
+// import Swiper core and required modules
+import { Pagination, A11y, Autoplay } from 'swiper/modules';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 
 const Slider = () => {
   return (
     <div>
       <Swiper
+        // install Swiper modules
+        modules={[Pagination, Autoplay, A11y]}
         spaceBetween={50}
         slidesPerView={1}
+        autoplay
+        pagination={{ clickable: true }}
         onSlideChange={() => console.log('slide change')}
         onSwiper={swiper => console.log(swiper)}
       >

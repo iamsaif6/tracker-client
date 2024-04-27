@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -12,7 +12,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar max-w-6xl mx-auto">
+    <div className="navbar max-w-6xl relative z-20 mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -24,14 +24,20 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a className="btn font-script btn-ghost text-2xl">Tracker</a>
+        <Link to="/">
+          <a className="btn font-script btn-ghost text-2xl">Tracker</a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end space-x-3">
-        <a className="btn">Login</a>
-        <a className="btn">Register</a>
+        <Link to="/login">
+          <a className="btn">Login</a>
+        </Link>
+        <Link to="register">
+          <a className="btn">Register</a>
+        </Link>
       </div>
     </div>
   );

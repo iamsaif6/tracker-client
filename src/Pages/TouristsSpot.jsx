@@ -1,7 +1,13 @@
-import React from 'react';
+import { Helmet } from 'react-helmet';
 
 const TouristsSpot = () => {
-  return <div>Toursbs Spot</div>;
+  return (
+    <div>
+      <Helmet>
+        <title>All Tourist Spots | Tracker</title>
+      </Helmet>
+    </div>
+  );
 };
 
 export default TouristsSpot;
