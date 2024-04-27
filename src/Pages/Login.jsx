@@ -1,18 +1,19 @@
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../Components/AuthProvider';
 import toast from 'react-hot-toast';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const notifyError = text => toast.error(text);
 const notifySuccess = text => toast.success(text);
 
 const Login = () => {
+  const [show, setShow] = useState(true);
   const { loginUser } = useContext(AuthContext);
 
   //   Handle Login
-
   const handleLogin = e => {
     e.preventDefault();
     const form = e.target;
@@ -55,12 +56,23 @@ const Login = () => {
               name="email"
             />
             <br />
-            <input
-              className="bg-[#F4F4F5] py-3 placeholder:text-[14px] px-5 text-[16px] border-transparent border-[1px] focus:border-light w-full  outline-none rounded-md"
-              type="password"
-              placeholder="Password"
-              name="password"
-            />{' '}
+            <label className="relative">
+              <input
+                className="bg-[#F4F4F5] py-3 placeholder:text-[14px] px-5 text-[16px] border-transparent border-[1px] focus:border-light w-full  outline-none rounded-md"
+                type={show ? 'password' : 'text'}
+                placeholder="Password"
+                name="password"
+              />
+              <span
+                onClick={() => {
+                  setShow(!show);
+                }}
+                className="absolute cursor-pointer top-1/2 right-3 -translate-y-1/2"
+              >
+                {show ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </label>
+
             <br />
             <Link to="/" className="text-light text-[12px] my-4 block text-right">
               Forgot Password ?
