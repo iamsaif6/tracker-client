@@ -1,0 +1,8 @@
+.navbar ul a {
+  padding: 20px 20px;
+  font-weight: 500;
+}
+
+.navbar ul a.active {
+  color: #eb5959;
+}
