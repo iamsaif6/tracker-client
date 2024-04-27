@@ -7,7 +7,7 @@ export default {
         script: '"Kaushan Script", cursive;',
       },
       colors: {
-        light: '#EB5959',
+        light: '#f24c4c',
       },
     },
   },

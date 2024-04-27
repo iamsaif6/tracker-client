@@ -24,13 +24,14 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Tracker</a>
+        <a className="btn font-script btn-ghost text-2xl">Tracker</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
+      <div className="navbar-end space-x-3">
+        <a className="btn">Login</a>
+        <a className="btn">Register</a>
       </div>
     </div>
   );
