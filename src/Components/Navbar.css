@@ -6,6 +6,9 @@
 .navbar ul a.active {
   color: #f24c4c;
 }
+.footer-nav a.active {
+  color: #f24c4c;
+}
 
 .swiper-pagination-bullet-active {
   background-color: #fff !important;
