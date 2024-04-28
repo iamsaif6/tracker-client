@@ -4,13 +4,14 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './Root';
 import Home from './Pages/Home';
-import TouristsSpot from './Pages/TouristsSpot';
 import AddSpot from './Pages/AddSpot';
 import MyList from './Pages/MyList';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import AuthProvider from './Components/AuthProvider';
 import PrivateRoute from './Pages/PrivateRoute';
+import AllTouristsSpot from './Pages/AllTouristsSpot';
+import Details from './Pages/Details';
 
 const router = createBrowserRouter([
   {
@@ -20,10 +21,11 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
+        loader: () => fetch('http://localhost:3000/'),
       },
       {
         path: '/tourist_spot',
-        element: <TouristsSpot></TouristsSpot>,
+        element: <AllTouristsSpot></AllTouristsSpot>,
       },
       {
         path: '/add_spot',
@@ -48,6 +50,11 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>,
+      },
+      {
+        path: '/details/:id',
+        element: <Details></Details>,
+        loader: ({ params }) => fetch(`http://localhost:3000/details/${params.id}`),
       },
     ],
   },
