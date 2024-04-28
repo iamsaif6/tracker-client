@@ -6,6 +6,7 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // Sign up user
   const singUp = (email, password) => {
@@ -14,6 +15,7 @@ const AuthProvider = ({ children }) => {
 
   //   Update profile after login
   const updateUserProfile = (name, photUrl) => {
+    setLoading(true);
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photUrl,
@@ -22,12 +24,14 @@ const AuthProvider = ({ children }) => {
 
   //   Login User
   const loginUser = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   //   Logout Current User
 
   const LogOut = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
@@ -37,6 +41,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       console.log(currentUser);
       setUser(currentUser);
+      setLoading(false);
     });
 
     return () => {
@@ -50,6 +55,7 @@ const AuthProvider = ({ children }) => {
     loginUser,
     user,
     LogOut,
+    loading,
   };
 
   return <AuthContext.Provider value={AuthValue}>{children}</AuthContext.Provider>;

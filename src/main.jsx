@@ -10,6 +10,7 @@ import MyList from './Pages/MyList';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import AuthProvider from './Components/AuthProvider';
+import PrivateRoute from './Pages/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -26,11 +27,19 @@ const router = createBrowserRouter([
       },
       {
         path: '/add_spot',
-        element: <AddSpot></AddSpot>,
+        element: (
+          <PrivateRoute>
+            <AddSpot></AddSpot>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/my_list',
-        element: <MyList></MyList>,
+        element: (
+          <PrivateRoute>
+            <MyList></MyList>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/login',

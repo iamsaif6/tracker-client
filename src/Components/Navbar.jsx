@@ -53,7 +53,7 @@ const Navbar = () => {
       </div>
       {user ? (
         <div className="dropdown dropdown-end">
-          <div tabIndex={0} role="button" className="btn tooltip-bottom tooltip  btn-ghost btn-circle avatar" data-tip={user?.displayName}>
+          <div tabIndex={0} role="button" className="btn tooltip-left tooltip  btn-ghost btn-circle avatar" data-tip={user?.displayName}>
             <div className="w-10  rounded-full">
               {' '}
               <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
@@ -63,11 +63,14 @@ const Navbar = () => {
             <li>
               <a className="justify-between">
                 Profile
-                <span className="badge">New</span>
+                <span className="badge">Coming</span>
               </a>
             </li>
             <li>
-              <a>Settings</a>
+              <a>
+                Settings
+                <span className="badge">Coming</span>
+              </a>
             </li>
             <li onClick={handleSignOut}>
               <a>Logout</a>
