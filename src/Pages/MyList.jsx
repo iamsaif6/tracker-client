@@ -4,6 +4,7 @@ import { AuthContext } from '../Components/AuthProvider';
 import { FaEye, FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MyList = () => {
   const { user } = useContext(AuthContext);
@@ -16,12 +17,44 @@ const MyList = () => {
       });
   }, [user.email]);
 
+  const handleDelete = id => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#f24c4c',
+      cancelButtonColor: '#333',
+      confirmButtonText: 'Yes, delete it!',
+    }).then(result => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Deleted!',
+          text: 'Your file has been deleted.',
+          icon: 'success',
+        });
+
+        fetch(`http://localhost:3000/my_list/${id}`, {
+          method: 'DELETE',
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.deletedCount > 0) {
+              console.log('deleted');
+              const newSpots = spots.filter(spot => spot._id !== id);
+              setSpot(newSpots);
+            }
+          });
+      }
+    });
+  };
+
   return (
     <div className="max-w-6xl mx-auto">
       <Helmet>
         <title>My List | Tracker</title>
       </Helmet>
-      <div>
+      <div className="mb-[70px]">
         <h2 className="text-[30px] font-semibold text-center my-9">My Tour Spot List</h2>
         <div>
           <div className="overflow-x-auto">
@@ -62,22 +95,26 @@ const MyList = () => {
                     <td>
                       <p>{spot.travel_time}</p>
                     </td>
-                    <td className="text-[20px] flex items-center gap-3">
+                    <td className="text-[20px]  flex items-center gap-3">
                       <Link to={`/details/${spot._id}`}>
-                        <button title="View">
+                        <button className="hover:text-light transition-all" title="View">
                           <FaEye className="text-[22px] mt-[2px]" />
                         </button>
                       </Link>
                       <Link>
-                        <button title="Edit">
+                        <button className="hover:text-light transition-all" title="Edit">
                           <FaEdit />
                         </button>
                       </Link>
-                      <Link>
-                        <button title="Delete">
-                          <MdDelete />
-                        </button>
-                      </Link>
+                      <button
+                        className="hover:text-light transition-all"
+                        onClick={() => {
+                          handleDelete(spot._id);
+                        }}
+                        title="Delete"
+                      >
+                        <MdDelete />
+                      </button>
                     </td>
                   </tr>
                 ))}
