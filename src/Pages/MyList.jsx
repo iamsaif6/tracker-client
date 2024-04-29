@@ -9,8 +9,10 @@ const MyList = () => {
   useEffect(() => {
     fetch(`http://localhost:3000/mylist/${user.email}`)
       .then(res => res.json())
-      .then(data => setSpot(data));
-  }, []);
+      .then(data => {
+        setSpot(data);
+      });
+  }, [user.email]);
 
   return (
     <div className="max-w-6xl mx-auto">

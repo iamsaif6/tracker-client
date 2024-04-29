@@ -4,7 +4,8 @@ import TouristSpots from '../Components/TouristSpots';
 import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
-  const spots = useLoaderData();
+  const data = useLoaderData();
+  const spots = data.slice(0, 6);
 
   return (
     <div>
