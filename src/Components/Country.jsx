@@ -17,12 +17,12 @@ const Country = () => {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="text-center mb-9">
-        <h1 className="text-[45px] mb-2 font-bold">Browse By Country</h1>
+        <h1 className="text-[45px] mb-[60px] mt-[30px] font-bold">Browse By Country</h1>
       </div>
-      <div className="grid grid-cols-3 gap-7">
+      <div className="grid grid-cols-3 gap-7 mb-[60px]">
         {countries.map(country => {
           return (
-            <Link key={country._id}>
+            <Link to={`/country/${country.country_Name}`} key={country._id}>
               <div className="border group rounded overflow-hidden hover:shadow-lg transition-all">
                 <div className="h-[250px]  rounded-t overflow-hidden">
                   <img

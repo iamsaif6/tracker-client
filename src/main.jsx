@@ -14,6 +14,7 @@ import AllTouristsSpot from './Pages/AllTouristsSpot';
 import Details from './Pages/Details';
 import Update from './Pages/Update';
 import ErrorPage from './Pages/ErrorPage';
+import SpecificCountry from './Pages/SpecificCountry';
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,15 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) => fetch(`http://localhost:3000/details/${params.id}`),
+      },
+      {
+        path: '/country/:id',
+        element: (
+          <PrivateRoute>
+            <SpecificCountry></SpecificCountry>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => fetch(`http://localhost:3000/country/${params.id}`),
       },
     ],
   },
