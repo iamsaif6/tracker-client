@@ -1,43 +1,37 @@
-import { useContext } from 'react';
 import { Helmet } from 'react-helmet';
-import { AuthContext } from '../Components/AuthProvider';
+import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const AddSpot = () => {
-  const { user } = useContext(AuthContext);
+const Update = () => {
+  const spot = useLoaderData();
 
-  const handleAddSpot = e => {
+  const handleUpdate = e => {
     e.preventDefault();
+
     const form = e.target;
     const tourists_spot_name = form.tourists_spot_name.value;
     const location = form.location.value;
     const seasonality = form.seasonality.value;
     const totaVisitorsPerYear = form.totaVisitorsPerYear.value;
-    const name = form.name.value;
     const country_Name = form.country_Name.value;
     const average_cost = form.average_cost.value;
     const travel_time = form.travel_time.value;
     const image = form.image.value;
-    const email = form.email.value;
     const description = form.description.value;
     const spots = {
       tourists_spot_name,
       location,
       seasonality,
       totaVisitorsPerYear,
-      name,
       country_Name,
       average_cost,
       travel_time,
       image,
-      email,
       description,
     };
 
-    console.log(JSON.stringify(spots));
-    console.log(spots);
-    fetch('http://localhost:3000/add_spot', {
-      method: 'POST',
+    fetch(`http://localhost:3000/update/${spot._id}`, {
+      method: 'PUT',
       headers: {
         'content-type': 'application/json',
       },
@@ -45,12 +39,17 @@ const AddSpot = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        if (data.acknowledged) {
+        if (data.modifiedCount > 0) {
           Swal.fire({
-            title: 'Congratulation !',
-            text: 'Successfully Added The Spot',
+            title: 'Updated !',
+            text: 'Your Post Has Been Updated',
             icon: 'success',
+          });
+        } else if (data.modifiedCount == 0) {
+          Swal.fire({
+            title: 'Not Updated !',
+            text: 'Please Make Changes For Update',
+            icon: 'error',
           });
         }
       });
@@ -59,26 +58,35 @@ const AddSpot = () => {
   return (
     <div>
       <Helmet>
-        <title>Add Tourist Spot | Tracker</title>
+        <title>Update Tourist Spot | Tracker</title>
       </Helmet>
 
       <div className='h-screen flex items-center justify-center w-full bg-no-repeat bg-cover bg-center  bg-[url("https://i.ibb.co/Qkxsctx/raphael-nogueira-JMYBet-GDIKY-unsplash-copy.jpg")]'>
         <div className="p-12 w-3/5 bg-[#0000009d]  border-[1px] rounded-lg">
-          <form onSubmit={handleAddSpot} className="grid grid-cols-2 gap-6">
+          <form onSubmit={handleUpdate} className="grid grid-cols-2 gap-6">
             <div className=" space-y-5">
               <input
                 type="text"
                 placeholder="Tourist Spot Name"
                 className="input input-bordered w-full"
                 name="tourists_spot_name"
+                defaultValue={spot.tourists_spot_name}
                 required
               />
-              <input type="text" placeholder="Location" className="input input-bordered w-full" name="location" required />
+              <input
+                type="text"
+                placeholder="Location"
+                className="input input-bordered w-full"
+                name="location"
+                defaultValue={spot.location}
+                required
+              />
               <input
                 type="text"
                 placeholder="Seasonality (ex : summer, winter)"
                 className="input input-bordered w-full"
                 name="seasonality"
+                defaultValue={spot.seasonality}
                 required
               />
               <input
@@ -86,51 +94,57 @@ const AddSpot = () => {
                 placeholder="Total Visitors Per Year (ex : 10000)"
                 className="input input-bordered w-full"
                 name="totaVisitorsPerYear"
+                defaultValue={spot.totaVisitorsPerYear}
                 required
               />
-              <input type="text" placeholder="Your Name" className="input input-bordered w-full" name="name" required />
             </div>
             <div className="space-y-5">
               <select required name="country_Name" className="select select-bordered w-full ">
-                <option disabled selected>
-                  Select Country
-                </option>
-                <option>Bangladesh</option>
-                <option>Thailand</option>
-                <option>Indonesia</option>
-                <option>Malaysia</option>
-                <option>Vietnam</option>
-                <option>Cambodia</option>
+                <option disabled>Select Country</option>
+                {spot.country_Name == 'Bangladesh' ? <option selected>Bangladesh</option> : <option>Bangladesh</option>}
+                {spot.country_Name == 'Thailand' ? <option selected>Thailand</option> : <option>Thailand</option>}
+                {spot.country_Name == 'Indonesia' ? <option selected>Indonesia</option> : <option>Indonesia</option>}
+                {spot.country_Name == 'Malaysia' ? <option selected>Malaysia</option> : <option>Malaysia</option>}
+                {spot.country_Name == 'Vietnam' ? <option selected>Vietnam</option> : <option>Vietnam</option>}
+                {spot.country_Name == 'Cambodia' ? <option selected>Cambodia</option> : <option>Cambodia</option>}
               </select>
-              <input type="text" placeholder="Average Cost" className="input input-bordered w-full" name="average_cost" required />
+              <input
+                type="text"
+                placeholder="Average Cost"
+                className="input input-bordered w-full"
+                name="average_cost"
+                defaultValue={spot.average_cost}
+                required
+              />
               <input
                 type="text"
                 placeholder="Travel Time (ex : 2-4 days)"
                 className="input input-bordered w-full"
                 name="travel_time"
+                defaultValue={spot.travel_time}
                 required
               />
-              <input type="url" placeholder="Enter Image URL of The Spot" className="input input-bordered w-full" name="image" required />
               <input
-                type="email"
-                placeholder="Your Email"
-                defaultValue={user?.email}
+                type="url"
+                placeholder="Enter Image URL of The Spot"
                 className="input input-bordered w-full"
-                name="email"
-                readOnly
+                name="image"
+                defaultValue={spot.image}
+                required
               />
             </div>
             <textarea
               placeholder="Enter a short description"
               className=" col-span-2 textarea textarea-bordered w-full"
               name="description"
+              defaultValue={spot.description}
               required
               id=""
               cols="10"
               rows="2"
             ></textarea>
             <button type="submit" className="bg-light rounded-lg py-3 text-white text-semibold col-span-2">
-              Add Spot
+              Update Spot
             </button>
           </form>
         </div>
@@ -139,4 +153,4 @@ const AddSpot = () => {
   );
 };
 
-export default AddSpot;
+export default Update;

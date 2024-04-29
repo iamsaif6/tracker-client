@@ -101,7 +101,7 @@ const MyList = () => {
                           <FaEye className="text-[22px] mt-[2px]" />
                         </button>
                       </Link>
-                      <Link>
+                      <Link to={`/update/${spot._id}`}>
                         <button className="hover:text-light transition-all" title="Edit">
                           <FaEdit />
                         </button>

@@ -2,6 +2,7 @@ import Slider from '../Components/Slider';
 import { Helmet } from 'react-helmet';
 import TouristSpots from '../Components/TouristSpots';
 import { useLoaderData } from 'react-router-dom';
+import Country from '../Components/Country';
 
 const Home = () => {
   const data = useLoaderData();
@@ -14,6 +15,7 @@ const Home = () => {
       </Helmet>
       <Slider></Slider>
       <TouristSpots spots={spots}></TouristSpots>
+      <Country></Country>
     </div>
   );
 };
