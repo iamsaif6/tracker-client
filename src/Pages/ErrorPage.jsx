@@ -1,16 +1,18 @@
-import Lottie, { useLottie } from 'lottie-react';
+import Lottie from 'lottie-react';
 import LottieError from '../../public/LottieError.json';
-import Navbar from '../Components/Navbar';
-import Footer from '../Components/Footer';
+import { Link } from 'react-router-dom';
 
 const ErrorPage = () => {
   return (
     <div>
-      <Navbar></Navbar>
-      <div className="max-w-[650px] mx-auto">
+      <div className="max-w-[600px] mx-auto">
         <Lottie animationData={LottieError} loop={true} />
+        <div className="text-center mt-5">
+          <Link>
+            <button className="bg-light text-white py-3 px-6 rounded">Go Home</button>
+          </Link>
+        </div>
       </div>
-      <Footer></Footer>
     </div>
   );
 };

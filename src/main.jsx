@@ -84,6 +84,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/country/:id',
+        errorElement: <ErrorPage></ErrorPage>,
         element: (
           <PrivateRoute>
             <SpecificCountry></SpecificCountry>

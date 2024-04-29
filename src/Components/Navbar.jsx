@@ -70,7 +70,6 @@ const Navbar = () => {
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn tooltip-left tooltip  btn-ghost btn-circle avatar" data-tip={user?.displayName}>
             <div className="w-10  rounded-full">
-              {' '}
               <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
             </div>
           </div>
