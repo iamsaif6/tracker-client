@@ -6,7 +6,7 @@ const Country = () => {
   const [countries, setCountry] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/country')
+    fetch('https://tracker-murex-phi.vercel.app/country')
       .then(res => res.json())
       .then(data => {
         setCountry(data);

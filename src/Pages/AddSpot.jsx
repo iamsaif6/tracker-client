@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 
 const AddSpot = () => {
   const { user } = useContext(AuthContext);
+  console.log(user);
 
   const handleAddSpot = e => {
     e.preventDefault();
@@ -36,7 +37,7 @@ const AddSpot = () => {
 
     console.log(JSON.stringify(spots));
     console.log(spots);
-    fetch('http://localhost:3000/add_spot', {
+    fetch('https://tracker-murex-phi.vercel.app/add_spot', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

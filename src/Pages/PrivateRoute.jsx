@@ -6,8 +6,6 @@ const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   //   const navigate = useNavigate();
 
-  console.log('from priv', user);
-
   if (loading) {
     return (
       <>

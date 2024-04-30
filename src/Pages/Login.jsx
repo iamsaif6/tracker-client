@@ -11,7 +11,7 @@ const notifySuccess = text => toast.success(text);
 
 const Login = () => {
   const [show, setShow] = useState(true);
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, gooleSignIn, githubSignIn } = useContext(AuthContext);
 
   //   Handle Login
   const handleLogin = e => {
@@ -27,6 +27,28 @@ const Login = () => {
         notifySuccess('Logged in Successfully');
       })
       .catch(error => notifyError(error.message));
+  };
+
+  // Handle Google Login
+  const handleGoogleLogin = () => {
+    gooleSignIn()
+      .then(() => {
+        notifySuccess('Logged in Successfully');
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
+
+  // Handle Github Login
+  const handleGithubLogin = () => {
+    githubSignIn()
+      .then(() => {
+        notifySuccess('Logged in Successfully');
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
   };
 
   return (
@@ -83,10 +105,10 @@ const Login = () => {
           </form>
           <p className="text-center my-6">or</p>
           <div className="text-center space-x-3">
-            <button className="border p-2 rounded">
+            <button onClick={handleGoogleLogin} className="border p-2 rounded">
               <FaGoogle />
             </button>
-            <button className="border p-2 rounded">
+            <button onClick={handleGithubLogin} className="border p-2 rounded">
               <FaGithub />
             </button>
           </div>

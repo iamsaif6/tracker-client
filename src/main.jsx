@@ -26,13 +26,13 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home></Home>,
         errorElement: <ErrorPage></ErrorPage>,
-        loader: () => fetch('http://localhost:3000/'),
+        loader: () => fetch('https://tracker-murex-phi.vercel.app/'),
       },
       {
         path: '/tourist_spot',
         element: <AllTouristsSpot></AllTouristsSpot>,
         errorElement: <ErrorPage></ErrorPage>,
-        loader: () => fetch('http://localhost:3000/'),
+        loader: () => fetch('https://tracker-murex-phi.vercel.app/'),
       },
       {
         path: '/add_spot',
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
             <Details></Details>
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:3000/details/${params.id}`),
+        loader: ({ params }) => fetch(`https://tracker-murex-phi.vercel.app/details/${params.id}`),
       },
       {
         path: '/update/:id',
@@ -80,7 +80,7 @@ const router = createBrowserRouter([
             <Update></Update>
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:3000/details/${params.id}`),
+        loader: ({ params }) => fetch(`https://tracker-murex-phi.vercel.app/details/${params.id}`),
       },
       {
         path: '/country/:id',
@@ -90,7 +90,7 @@ const router = createBrowserRouter([
             <SpecificCountry></SpecificCountry>
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:3000/country/${params.id}`),
+        loader: ({ params }) => fetch(`https://tracker-murex-phi.vercel.app/country/${params.id}`),
       },
     ],
   },

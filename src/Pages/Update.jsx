@@ -30,7 +30,7 @@ const Update = () => {
       description,
     };
 
-    fetch(`http://localhost:3000/update/${spot._id}`, {
+    fetch(`https://tracker-murex-phi.vercel.app/update/${spot._id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',

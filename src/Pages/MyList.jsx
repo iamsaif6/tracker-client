@@ -10,7 +10,7 @@ const MyList = () => {
   const { user } = useContext(AuthContext);
   const [spots, setSpot] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:3000/mylist/${user.email}`)
+    fetch(`https://tracker-murex-phi.vercel.app/mylist/${user.email}`)
       .then(res => res.json())
       .then(data => {
         setSpot(data);
@@ -34,7 +34,7 @@ const MyList = () => {
           icon: 'success',
         });
 
-        fetch(`http://localhost:3000/my_list/${id}`, {
+        fetch(`https://tracker-murex-phi.vercel.app/my_list/${id}`, {
           method: 'DELETE',
         })
           .then(res => res.json())
