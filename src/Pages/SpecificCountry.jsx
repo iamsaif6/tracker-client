@@ -6,15 +6,15 @@ const SpecificCountry = () => {
   const countries = useLoaderData();
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl px-5 mx-auto">
       <h2 className="text-center text-[30px] mt-[50px] mb-[70px]">All Listed Spots From {countries[0].country_Name}</h2>
-      <div className="grid grid-cols-3 gap-7 mb-[70px]">
+      <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-7 mb-[70px]">
         {countries.map(country => {
           return (
             <div key={country._id} className="border group rounded overflow-hidden hover:shadow-lg transition-all">
               <div className="h-[250px]  rounded-t overflow-hidden">
                 <img
-                  className="h-full group-hover:scale-[130%] transition duration-300 object-cover overflow-hidden"
+                  className="h-full w-full group-hover:scale-[130%] transition duration-300 object-cover overflow-hidden"
                   src={country.image}
                   alt=""
                 />

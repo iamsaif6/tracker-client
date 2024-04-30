@@ -16,7 +16,7 @@ const Details = () => {
         <title>{spot.tourists_spot_name}</title>
       </Helmet>
       <div>
-        <h2 className="text-center text-[50px] mb-2 font-semibold">{spot.tourists_spot_name}</h2>
+        <h2 className="text-center text-[35px] md:text-[50px] mb-2 font-semibold">{spot.tourists_spot_name}</h2>
         <p className="text-center text-[18px] mb-6 flex items-center justify-center gap-3">
           <span className="flex gap-2 items-center">
             <BiWorld className="text-light" />

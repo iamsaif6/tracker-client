@@ -5,8 +5,12 @@ import { Link } from 'react-router-dom';
 const TouristSpot = ({ spot }) => {
   return (
     <div className="border group rounded overflow-hidden hover:shadow-lg transition-all">
-      <div className="h-[250px]  rounded-t overflow-hidden">
-        <img className="h-full group-hover:scale-[130%] transition duration-300 object-cover overflow-hidden" src={spot.image} alt="" />
+      <div className="h-[250px] w-full  rounded-t overflow-hidden">
+        <img
+          className="h-full w-full group-hover:scale-[130%] transition duration-300 object-cover overflow-hidden"
+          src={spot.image}
+          alt=""
+        />
       </div>
       <div className="px-6 py-7">
         <h3 className="text-left text-[18px] mb-3">{spot.tourists_spot_name}</h3>

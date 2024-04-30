@@ -61,9 +61,9 @@ const Update = () => {
         <title>Update Tourist Spot | Tracker</title>
       </Helmet>
 
-      <div className='h-screen flex items-center justify-center w-full bg-no-repeat bg-cover bg-center  bg-[url("https://i.ibb.co/Qkxsctx/raphael-nogueira-JMYBet-GDIKY-unsplash-copy.jpg")]'>
-        <div className="p-12 w-3/5 bg-[#0000009d]  border-[1px] rounded-lg">
-          <form onSubmit={handleUpdate} className="grid grid-cols-2 gap-6">
+      <div className='md:py-[80px] px-5  py-[40px] flex items-center justify-center w-full bg-no-repeat bg-cover bg-center  bg-[url("https://i.ibb.co/Qkxsctx/raphael-nogueira-JMYBet-GDIKY-unsplash-copy.jpg")]'>
+        <div className="md:p-12 p-5 sm:p-8 md:w-4/5 lg:w-3/5 bg-[#0000009d]  border-[1px] rounded-lg">
+          <form onSubmit={handleUpdate} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className=" space-y-5">
               <input
                 type="text"
@@ -135,7 +135,7 @@ const Update = () => {
             </div>
             <textarea
               placeholder="Enter a short description"
-              className=" col-span-2 textarea textarea-bordered w-full"
+              className=" md:col-span-2 textarea textarea-bordered w-full"
               name="description"
               defaultValue={spot.description}
               required
@@ -143,7 +143,7 @@ const Update = () => {
               cols="10"
               rows="2"
             ></textarea>
-            <button type="submit" className="bg-light rounded-lg py-3 text-white text-semibold col-span-2">
+            <button type="submit" className="bg-light rounded-lg py-3 text-white text-semibold md:col-span-2">
               Update Spot
             </button>
           </form>

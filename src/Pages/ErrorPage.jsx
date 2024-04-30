@@ -7,7 +7,7 @@ const ErrorPage = () => {
     <div>
       <div className="max-w-[600px] mx-auto">
         <Lottie animationData={LottieError} loop={true} />
-        <div className="text-center mt-5">
+        <div className="text-center mt-5 mb-[70px]">
           <Link>
             <button className="bg-light text-white py-3 px-6 rounded">Go Home</button>
           </Link>

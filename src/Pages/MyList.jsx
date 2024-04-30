@@ -63,7 +63,7 @@ const MyList = () => {
               <thead>
                 <tr>
                   <th>Spot Name</th>
-                  <th>Location</th>
+                  <th className="hidden md:block">Location</th>
                   <th>Avg Cost</th>
                   <th>Travel Time</th>
                   <th>Actions</th>
@@ -75,18 +75,18 @@ const MyList = () => {
                   <tr key={spot._id}>
                     <td>
                       <div className="flex items-center gap-3">
-                        <div className="avatar">
+                        <div className="avatar hidden md:block">
                           <div className="mask mask-squircle w-12 h-12">
                             <img src={spot.image} alt="Avatar Tailwind CSS Component" />
                           </div>
                         </div>
                         <div>
-                          <div className="font-bold">{spot.tourists_spot_name}</div>
+                          <div className="font-bold text-[12px] md:text-[15px]">{spot.tourists_spot_name}</div>
                           <div className="text-sm opacity-50">{spot.country_Name}</div>
                         </div>
                       </div>
                     </td>
-                    <td>
+                    <td className="hidden md:block">
                       {spot.location}
                       <br />
                       <span className="badge badge-ghost badge-sm">{spot.country_Name}</span>

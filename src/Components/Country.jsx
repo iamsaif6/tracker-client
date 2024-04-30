@@ -15,11 +15,11 @@ const Country = () => {
   }, []);
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl px-5 mx-auto">
       <div className="text-center mb-9">
-        <h1 className="text-[45px] mb-[60px] mt-[30px] font-bold">Browse By Country</h1>
+        <h1 className="md:text-[45px] text-[30px] mb-[60px] mt-[30px] font-bold">Browse By Country</h1>
       </div>
-      <div className="grid grid-cols-3 gap-7 mb-[60px]">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7 mb-[60px]">
         {countries.map(country => {
           return (
             <Link to={`/country/${country.country_Name}`} key={country._id}>
