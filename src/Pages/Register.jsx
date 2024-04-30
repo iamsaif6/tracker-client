@@ -10,7 +10,7 @@ const notifySuccess = text => toast.success(text);
 
 const Register = () => {
   const [show, setShow] = useState(true);
-  const { singUp, updateUserProfile } = useContext(AuthContext);
+  const { singUp, LogOut, updateUserProfile } = useContext(AuthContext);
 
   // Register
   const handleRegister = e => {
@@ -19,7 +19,7 @@ const Register = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const photUrl = form.photoURL.value;
+    const photoUrl = form.photoURL.value;
 
     // Password validation
     if (password.length < 6) {
@@ -36,9 +36,17 @@ const Register = () => {
           notifySuccess('User Created Successfully');
 
           //Update profile after sign up
-          updateUserProfile(name, photUrl)
+          updateUserProfile(name, photoUrl)
             .then(() => console.log('profile updated'))
             .catch(error => console.log(error.message));
+
+          //Logout
+
+          LogOut()
+            .then(() => {
+              notifySuccess('Please Login Now');
+            })
+            .catch(error => console.log(error));
         })
         .catch(error => {
           console.log(error);

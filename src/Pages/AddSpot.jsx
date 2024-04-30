@@ -118,7 +118,6 @@ const AddSpot = () => {
                 defaultValue={user?.email}
                 className="input input-bordered w-full"
                 name="email"
-                readOnly
               />
             </div>
             <textarea

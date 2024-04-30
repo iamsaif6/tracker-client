@@ -68,7 +68,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       unsubscribe();
     };
-  }, [user]);
+  }, []);
 
   const AuthValue = {
     singUp,

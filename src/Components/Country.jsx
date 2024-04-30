@@ -26,7 +26,7 @@ const Country = () => {
               <div className="border group rounded overflow-hidden hover:shadow-lg transition-all">
                 <div className="h-[250px]  rounded-t overflow-hidden">
                   <img
-                    className="h-full group-hover:scale-[130%] transition duration-300 object-cover overflow-hidden"
+                    className="h-full group-hover:scale-[130%] w-full transition duration-300 object-cover overflow-hidden"
                     src={country.image}
                     alt=""
                   />
