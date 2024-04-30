@@ -1,10 +1,14 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext } from '../Components/AuthProvider';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
-  //   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   if (loading) {
     return (
@@ -18,7 +22,7 @@ const PrivateRoute = ({ children }) => {
   if (user) {
     return children;
   } else {
-    return <Navigate to="/login"></Navigate>;
+    return <Navigate state={location.pathname} to="/login"></Navigate>;
   }
 };
 

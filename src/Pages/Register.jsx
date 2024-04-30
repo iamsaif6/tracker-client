@@ -56,7 +56,7 @@ const Register = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 mt-[100px] md:mt-0 md:min-h-screen">
+    <div className="grid grid-cols-1 mb-14 md:grid-cols-2 mt-[100px] md:mt-0 md:min-h-screen">
       <Helmet>
         <title>Register | Tracker</title>
       </Helmet>

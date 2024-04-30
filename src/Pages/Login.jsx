@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../Components/AuthProvider';
@@ -12,6 +12,8 @@ const notifySuccess = text => toast.success(text);
 const Login = () => {
   const [show, setShow] = useState(true);
   const { loginUser, gooleSignIn, githubSignIn } = useContext(AuthContext);
+  const location = useLocation();
+  const nagivate = useNavigate(null);
 
   //   Handle Login
   const handleLogin = e => {
@@ -25,6 +27,7 @@ const Login = () => {
       .then(res => {
         console.log(res.user);
         notifySuccess('Logged in Successfully');
+        nagivate(location?.state ? location.state : '/');
       })
       .catch(error => notifyError(error.message));
   };
@@ -34,6 +37,7 @@ const Login = () => {
     gooleSignIn()
       .then(() => {
         notifySuccess('Logged in Successfully');
+        nagivate(location?.state ? location.state : '/');
       })
       .catch(error => {
         console.log(error.message);
@@ -45,6 +49,7 @@ const Login = () => {
     githubSignIn()
       .then(() => {
         notifySuccess('Logged in Successfully');
+        nagivate(location?.state ? location.state : '/');
       })
       .catch(error => {
         console.log(error.message);
@@ -52,7 +57,7 @@ const Login = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 mt-[100px] md:mt-0 md:min-h-screen">
+    <div className="grid mb-14 grid-cols-1 md:grid-cols-2 mt-[100px] md:mt-0 md:min-h-screen">
       <Helmet>
         <title>Login | Tracker</title>
       </Helmet>
