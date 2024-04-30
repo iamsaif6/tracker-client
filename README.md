@@ -24,3 +24,4 @@ Welcome to Tracker, your go-to destination for seamless travel experiences. Whet
 - **Swiper JS**
 - **Lottie**
 - **Cors**
+- **react-awesome-reveal**
